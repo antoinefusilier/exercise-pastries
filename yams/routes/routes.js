@@ -44,9 +44,12 @@ router.put("/pastrie/:choice", async (req, res) => {
    // await PastrieModel.updateOne({_id: id}, { choice: 'Priority' });
 });
 
+
+// ############################################### get all users
+
 router.get("/users", async (req, res) => {
     try {
-        const users = await UserShema.find({}, { token: 0, __v: 0 });
+        const users = await UserShema.find(element => element);
 
         res.json(users);
     } catch (err) {
