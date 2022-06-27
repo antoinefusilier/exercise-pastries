@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/rxjs@6.3.3/bundles/rxjs.umd.min.js"></script>
+   
+    <title>PGCD</title>
+  </head>
+  <body>
+
+    <p><input id="num1" text="text"  /></p>
+    <p><input id="num2" text="text"  /></p>
+    <p><span></span></p>
+    <script>
+        const { map, mergeMap, pluck } = rxjs.operators;
+        const { fromEvent, interval, timer } = rxjs;
+        const ob1$ = fromEvent(num1, "input");
+        const ob2$ = fromEvent(num2, "input");
+        const span = document.querySelector('span');
+  
+        ob1$.pipe(
+            mergeMap(
+                num1 => {
+                    console.log(num1.data);
+                    return ob2$.pipe(
+                        map(num2 => {
+                            return ( parseInt(num1.data) + parseInt(num2.data) ) % 2 ;
+                        })
+                    );
+                }
+            )
+        ).subscribe(res => span.textContent = res )
+      </script>
+  </body>
+</html>

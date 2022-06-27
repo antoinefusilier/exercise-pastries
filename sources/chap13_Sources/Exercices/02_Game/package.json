@@ -1,0 +1,15 @@
+{
+  "name": "02_game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Exercice_2_game.js",
+  "scripts": {
+    "start": "node Exercice_2_game.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rxjs": "^7.5.5"
+  }
+}
