@@ -46,7 +46,7 @@ router.put("/pastrie/:choice", async (req, res) => {
 
 router.get("/users", async (req, res) => {
     try {
-        const users = await UserShemas.find({}, { token: 0, __v: 0 });
+        const users = await UserShema.find({}, { token: 0, __v: 0 });
 
         res.json(users);
     } catch (err) {

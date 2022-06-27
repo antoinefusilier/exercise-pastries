@@ -30,12 +30,14 @@ export class AuthService {
     // console.log(token);
     // let user: Observable<User>;
     let confirmAuth: boolean;
-
+    console.log('user interne find =' + user);
     if (user){
       let user_db: Observable<User>;
 
       user_db = this.http.get<User>(`${this.userUrl}/${user.token}`);
       // user_db.password === password
+      console.log('User in database = ', user_db )
+
       if (password === '1234'){
         confirmAuth = true;
       } else {

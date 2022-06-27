@@ -32,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    canActivate: [GuardService],
+    // canActivate: [GuardService],
     component: DashboardComponent
   },
 ];

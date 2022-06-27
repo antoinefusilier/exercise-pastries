@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { User } from '../pastrie'
 import { AuthService } from '../auth.service';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { Routes } from '@angular/router';
 
 @Component({
   selector: 'app-pastrie-login',
@@ -13,8 +14,12 @@ export class PastrieLoginComponent implements OnInit {
 
   modelUser :User = new User('','', '');
 
-  constructor(private aS: AuthService) {
-
+  constructor(
+    private aS: AuthService,
+    private route: ActivatedRoute,
+    private router: Router
+    ) {
+      aS.auth(this.modelUser.email, this.modelUser.password)
   }
 
   ngOnInit(): void {
@@ -26,8 +31,18 @@ export class PastrieLoginComponent implements OnInit {
     console.log(this.modelUser)
   }
 
-  login(){
+  async login(){
+      if ((this.aS.auth(this.modelUser.email, this.modelUser.password)===true)){
+        this.router.navigate(['/dashboard']);
+        console.log('going to dashboard');
+      } else {
+        console.log('error');
+      }
+
 
   }
+
+
+
 
 }
