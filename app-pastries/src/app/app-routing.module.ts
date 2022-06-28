@@ -32,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    // canActivate: [GuardService],
+    canActivate: [GuardService],
     component: DashboardComponent
   },
 ];
@@ -41,4 +41,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {  }

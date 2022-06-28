@@ -29,20 +29,19 @@ export class PastrieLoginComponent implements OnInit {
   onSubmit(form: NgForm): void {
     console.log(form);
     console.log(this.modelUser)
+    this.connection(form);
   }
 
-  async login(){
-      if ((this.aS.auth(this.modelUser.email, this.modelUser.password)===true)){
-        this.router.navigate(['/dashboard']);
-        console.log('going to dashboard');
-      } else {
-        console.log('error');
-      }
-
-
+  async connection(form: NgForm){
+    await this.aS.login(this.modelUser.email, this.modelUser.password)
+    .then(()=> {
+      // If the primise is kept going to the Dashboard by Angular Routing
+      this.router.navigate(['/dashboard']);
+    })
+    // Else reset the formulary
+    .catch(() => {
+      form.reset()
+    })
   }
-
-
-
 
 }

@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 import { PastrieModel } from "../models/Pastrie.js";
-import { UserShema } from "../models/User.js";
+import { UserModel } from "../models/User.js";
 
 
 router.get("/pastries", async (req, res) => {
@@ -47,22 +47,33 @@ router.put("/pastrie/:choice", async (req, res) => {
 
 // ############################################### get all users
 
-router.get("/users", async (req, res) => {
+// router.get("/users", async (req, res) => {
+//     try {
+//         console.log(UserSchema);
+//         const users = await UserSchema.find({});
+//         res.json(users);
+//     } catch (err) {
+//         res.json({ error: "no dataset" });
+//         console.log(err);
+//     }
+// });
+router.get("/users", async(req, res) => {
     try {
-        const users = await UserShema.find(element => element);
-
-        res.json(users);
+        console.log(UserModel);
+        const User = await UserModel.find({}, {});
+        res.json(User);
     } catch (err) {
         res.json({ error: "no dataset" });
+        console.log(err);
     }
-});
+})
 
 // ############################################### get one user
 router.get("/users/:token", async (req, res) => {
     try {
         const token = req.params.token;
         // find({}, {}) == WHERE + RESTRICTION, on passe par le modèle pour faire la requête
-        const user = await UserShema.findOne({_token : token});
+        const user = await UserModel.findOne({_token : token});
         console.log(user)
         res.json(user);
     } catch (err) {

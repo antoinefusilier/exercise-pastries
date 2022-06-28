@@ -20,7 +20,7 @@ export const environment = {
   pastrieUrl : 'http://localhost:8000/pastrie',
   ingredientsUrl : 'http://localhost:8000/ingredients',
   ingredientUrl : 'http://localhost:8000/ingredient',
-  userUrl : 'http://localhost:8000/user'
+  userUrl : 'http://localhost:8000/users'
 };
 
 /*

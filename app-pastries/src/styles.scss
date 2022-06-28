@@ -1,10 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
 
 .principal{
     height: 8rem;
     margin: 0 4.5rem;
-    border-radius: .25rem; 
-    padding : 1rem; 
+    border-radius: .25rem;
+    padding : 1rem;
 }
 
 .content{
