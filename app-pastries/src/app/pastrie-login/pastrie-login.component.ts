@@ -4,7 +4,6 @@ import { User } from '../pastrie'
 import { AuthService } from '../auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Routes } from '@angular/router';
-
 @Component({
   selector: 'app-pastrie-login',
   templateUrl: './pastrie-login.component.html',
@@ -17,7 +16,7 @@ export class PastrieLoginComponent implements OnInit {
   constructor(
     private aS: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
     ) {
       aS.auth(this.modelUser.email, this.modelUser.password)
   }

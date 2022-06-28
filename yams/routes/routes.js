@@ -80,5 +80,12 @@ router.get("/users/:token", async (req, res) => {
         res.json({ error: "no dataset" });
     }
 });
+// ############################################### UPDATE token session user
+
+router.put("/users/:connect_status", async (req, res) => {
+    const connect = req.params.connect_status;
+    console.log(req.body);
+    await PastrieModel.updateOne({_token: token}, { connect_status: true });
+});
 
 export default router;

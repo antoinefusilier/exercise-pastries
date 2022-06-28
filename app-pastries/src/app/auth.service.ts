@@ -70,6 +70,7 @@ export class AuthService {
         user_db.subscribe(x => {
         // If password is password input
           if ( x.password === password){
+            this.setSession();
             resolve("Accept password");
           } else {
             reject("Reject password");
@@ -83,4 +84,41 @@ export class AuthService {
     // callback of the primise
     return (isPromise);
   }
+
+  setSession(){
+    let token_session = this.generateTokenAccess(15);
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('token_session', token_session);
+    console.log('Variable isLoggedIn Boolean :',localStorage.getItem('isLoggedIn'))
+    console.log('Token of session :',localStorage.getItem('token_session'))
+
+  }
+
+
+
+  generateTokenAccess(length:number){
+    var chain = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&<>*-";
+    var password = "";
+    var lgt = length;
+
+    // Condition afin de définir un password de 10 caratère si le paramètre de la fonction randomPassword()n'a pas été défini
+    if (!lgt) {
+      lgt = 10;
+    }
+
+    for (let i = 0; i < lgt; i++) {
+
+      // Ou charAt returne le caractère de la position demandé par le paramètre
+      // Ou Math.floor() renverra un entier, permet de controler et éviter les nombre décimaux
+      // Ou Math.random() renverra un nombre entier de façon "random" compris entre 0 et le * max(défini ci-dessous)
+      // Ou chain.length défini le Max du Math.random
+      password = password.concat(chain.charAt(Math.floor(Math.random() * chain.length)));
+
+    }
+    return password;
+  }
+
+
 }
+
+
