@@ -35,7 +35,7 @@ export class PastrieLoginComponent implements OnInit {
     await this.aS.login(this.modelUser.email, this.modelUser.password)
     .then(()=> {
       // If the primise is kept going to the Dashboard by Angular Routing
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/admin/pastrie']);
     })
     // Else reset the formulary
     .catch(() => {

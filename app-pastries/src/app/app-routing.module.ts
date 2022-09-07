@@ -8,6 +8,7 @@ import { PastrieGameComponent } from './pastrie-game/pastrie-game.component'
 
 import { GuardService } from './guard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PastrieComponent } from './admin/pastrie/pastrie.component';
 const routes: Routes = [
   {
       path: 'pastries',
@@ -35,6 +36,11 @@ const routes: Routes = [
     canActivate: [GuardService],
     component: DashboardComponent
   },
+  {
+    path: 'admin/pastrie',
+    canActivate: [GuardService],
+    component: PastrieComponent
+  }
 ];
 
 @NgModule({
